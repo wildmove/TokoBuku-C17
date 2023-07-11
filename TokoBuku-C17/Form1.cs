@@ -40,5 +40,12 @@ namespace TokoBuku_C17
             fm.Show();
             this.Hide();
         }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+            Form4 nw = new Form4();
+            nw.Show(); 
+            this.Hide();
+        }
     }
 }

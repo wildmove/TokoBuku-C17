@@ -34,8 +34,6 @@ namespace TokoBuku_C17
             textBox4.Enabled = false;
         }
 
-
-
         private void dataGridView()
         {
             try

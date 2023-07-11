@@ -83,6 +83,7 @@
             this.label5.Size = new System.Drawing.Size(56, 16);
             this.label5.TabIndex = 4;
             this.label5.Text = "pembeli";
+            this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // label6
             // 
