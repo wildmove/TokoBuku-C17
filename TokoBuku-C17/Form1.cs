@@ -16,5 +16,10 @@ namespace TokoBuku_C17
         {
             InitializeComponent();
         }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
