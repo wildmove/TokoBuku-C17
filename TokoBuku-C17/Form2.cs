@@ -149,33 +149,25 @@ namespace TokoBuku_C17
 
         private void button5_Click(object sender, EventArgs e)
         {
-            string nmSupplier = textBox2.Text;
             string idSupplier = textBox4.Text;
-            string alamatSupplier = textBox1.Text;
-            string noTelpSupplier = textBox3.Text;
 
-            if (textBox2.Text == "" || textBox4.Text == "" || textBox1.Text == "" || textBox3.Text == "")
+            if (textBox4.Text == "")
             {
-                MessageBox.Show("Masukkan Semua Data", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Masukkan Data ID Supplier", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
             }
             else
             {
                 koneksi.Open();
-                string str = "DELETE FROM supplier WHERE id_Supplier = '', nama_supplier = '', alamat_supplier = '', telp_supplier = '' ";
-                SqlCommand command = new SqlCommand(str, koneksi);
-                command.CommandType = CommandType.Text;
-                command.Parameters.Add(new SqlParameter("@nama_supplier", nmSupplier));
-                command.Parameters.Add(new SqlParameter("@id_supplier", idSupplier));
-                command.Parameters.Add(new SqlParameter("@alamat_supplier", alamatSupplier));
-                command.Parameters.Add(new SqlParameter("@telp_supplier", noTelpSupplier));
-                command.ExecuteNonQuery();
+                SqlCommand cmd = koneksi.CreateCommand();
+                cmd.CommandType = CommandType.Text;
+                cmd.CommandText = " delete from [supplier] where id_supplier = '" + textBox4.Text + "'";
+                cmd.ExecuteNonQuery();
                 koneksi.Close();
+                textBox4.Text = "";
                 MessageBox.Show("Data Berhasil Dihapus", "Sukses", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                refreshform();
-
             }
+
         }
     }
 }

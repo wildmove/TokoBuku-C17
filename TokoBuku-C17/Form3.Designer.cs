@@ -139,6 +139,7 @@
             this.button3.TabIndex = 14;
             this.button3.Text = "edit";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // button4
             // 
@@ -158,6 +159,7 @@
             this.button5.TabIndex = 16;
             this.button5.Text = "delete";
             this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // Form3
             // 
