@@ -95,6 +95,7 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(116, 22);
             this.textBox1.TabIndex = 7;
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // textBox2
             // 
@@ -118,6 +119,7 @@
             this.button1.TabIndex = 12;
             this.button1.Text = "show";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // button2
             // 
@@ -127,6 +129,7 @@
             this.button2.TabIndex = 13;
             this.button2.Text = "add";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button3
             // 
@@ -145,6 +148,7 @@
             this.button4.TabIndex = 15;
             this.button4.Text = "save";
             this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // button5
             // 
@@ -175,6 +179,7 @@
             this.Controls.Add(this.dataGridView1);
             this.Name = "Form3";
             this.Text = "kasir";
+            this.Load += new System.EventHandler(this.Form3_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
