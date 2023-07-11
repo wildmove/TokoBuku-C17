@@ -211,6 +211,7 @@
             this.Controls.Add(this.label1);
             this.Name = "Form4";
             this.Text = "pembeli";
+            this.Load += new System.EventHandler(this.Form4_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
