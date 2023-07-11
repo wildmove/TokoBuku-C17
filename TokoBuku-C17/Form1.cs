@@ -21,5 +21,33 @@ namespace TokoBuku_C17
         {
 
         }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+            Form5 rm = new Form5();
+            rm.Show();
+            this.Hide();
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+            Form2 hu = new Form2();
+            hu.Show();
+            this.Hide();
+        }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+            Form3 fm = new Form3();
+            fm.Show();
+            this.Hide();
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+            Form4 nw = new Form4();
+            nw.Show(); 
+            this.Hide();
+        }
     }
 }
