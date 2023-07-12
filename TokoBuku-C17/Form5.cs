@@ -41,7 +41,7 @@ namespace TokoBuku_C17
             textBox7.Enabled = false;
             textBox8.Enabled = false;  
             textBox9.Enabled = false;
-            Prodicbx();
+            Bukucbx();
             comboBox1.Enabled = false;
         }
         private void dataGridView()
@@ -65,7 +65,7 @@ namespace TokoBuku_C17
 
         }
 
-        private void Prodicbx()
+        private void Bukucbx()
         {
             koneksi.Open();
             String str = "select id_supplier from dbo.supplier";
@@ -216,6 +216,11 @@ namespace TokoBuku_C17
                 textBox1.Text = "";
                 MessageBox.Show("Data Berhasil Dihapus", "Sukses", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+        }
+
+        private void Form5_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
