@@ -25,8 +25,6 @@ namespace TokoBuku_C17
         {
             textBox1.Text = "";
             textBox2.Text = "";
-            textBox3.Text = "";
-            textBox4.Text = "";
             textBox5.Text = "";
             textBox6.Text = "";
             textBox7.Text = "";
@@ -34,8 +32,6 @@ namespace TokoBuku_C17
             textBox9.Text = "";
             textBox1.Enabled = false;
             textBox2.Enabled = false;
-            textBox3.Enabled = false;
-            textBox4.Enabled = false;
             textBox5.Enabled = false;
             textBox6.Enabled = false;
             textBox7.Enabled = false;
@@ -51,7 +47,7 @@ namespace TokoBuku_C17
                 using (SqlConnection connection = new SqlConnection(stringConnection))
                 {
                     connection.Open();
-                    string query = "SELECT id_buku, nama_buku, jumlah_stok, penulis, penerbit, TahunTerbit,harga_beli,harga_jual,keuntungan, id_supplier FROM dbo.buku";
+                    string query = "SELECT id_buku, nama_buku, jumlah_stok, penulis, penerbit, TahunTerbit,harga_jual, id_supplier FROM dbo.buku";
                     SqlDataAdapter dataAdapter = new SqlDataAdapter(query, connection);
                     DataSet dataSet = new DataSet();
                     dataAdapter.Fill(dataSet);
@@ -90,8 +86,6 @@ namespace TokoBuku_C17
         {
             textBox1.Enabled = true;
             textBox2.Enabled = true;
-            textBox3.Enabled = true;
-            textBox4.Enabled = true;
             textBox5.Enabled = true;
             textBox6.Enabled = true;
             textBox7.Enabled = true;
@@ -115,8 +109,6 @@ namespace TokoBuku_C17
         {
             string idBuku = textBox1.Text;
             string hargaJual = textBox2.Text;
-            string hargaBeli = textBox3.Text;
-            string keuntungan = textBox4.Text;
             string jmlStok = textBox5.Text;
             string nmBuku = textBox6.Text;
             string penulis = textBox7.Text;
@@ -124,7 +116,7 @@ namespace TokoBuku_C17
             string thnTerbit = textBox9.Text;
             string idSupplier = comboBox1.Text;
                 
-            if (textBox1.Text == "" || textBox2.Text == "" || textBox3.Text == "" || textBox4.Text == "" || textBox5.Text == "" || textBox6.Text == "" || textBox7.Text == "" || textBox8.Text == "" || textBox9.Text == "" || comboBox1.Text == "")
+            if (textBox1.Text == "" || textBox2.Text == "" || textBox5.Text == "" || textBox6.Text == "" || textBox7.Text == "" || textBox8.Text == "" || textBox9.Text == "" || comboBox1.Text == "")
             {
                 MessageBox.Show("Masukkan Semua Data", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
@@ -132,7 +124,7 @@ namespace TokoBuku_C17
             else
             {
                 koneksi.Open();
-                string str = "INSERT INTO dbo.buku (id_Buku, nama_buku, jumlah_stok, penulis, penerbit, TahunTerbit, harga_beli, harga_jual, keuntungan, id_supplier)" + "VALUES(@id_buku, @nama_buku, @jumlah_stok, @penulis, @penerbit, @TahunTerbit, @harga_beli, @harga_jual, @keuntungan, @id_supplier)";
+                string str = "INSERT INTO dbo.buku (id_Buku, nama_buku, jumlah_stok, penulis, penerbit, TahunTerbit, harga_jual, id_supplier)" + "VALUES(@id_buku, @nama_buku, @jumlah_stok, @penulis, @penerbit, @TahunTerbit, @harga_beli, @harga_jual, @keuntungan, @id_supplier)";
                 SqlCommand cmd = new SqlCommand(str, koneksi);
                 cmd.CommandType = CommandType.Text;
                 cmd.Parameters.Add(new SqlParameter("@id_buku", idBuku));
@@ -141,9 +133,7 @@ namespace TokoBuku_C17
                 cmd.Parameters.Add(new SqlParameter("@penulis", penulis));
                 cmd.Parameters.Add(new SqlParameter("@penerbit", penerbit));
                 cmd.Parameters.Add(new SqlParameter("@TahunTerbit", thnTerbit));
-                cmd.Parameters.Add(new SqlParameter("@harga_beli", hargaBeli));
                 cmd.Parameters.Add(new SqlParameter("@harga_jual", hargaJual));
-                cmd.Parameters.Add(new SqlParameter("@keuntungan", keuntungan));
                 cmd.Parameters.Add(new SqlParameter("@id_supplier", idSupplier));
                 cmd.ExecuteNonQuery();
                 MessageBox.Show("Data Berhasil Disimpan", "success", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -157,8 +147,6 @@ namespace TokoBuku_C17
         {
             string idBuku = textBox1.Text;
             string hargaJual = textBox2.Text;
-            string hargaBeli = textBox3.Text;
-            string keuntungan = textBox4.Text;
             string jmlStok = textBox5.Text;
             string nmBuku = textBox6.Text;
             string penulis = textBox7.Text;
@@ -166,7 +154,7 @@ namespace TokoBuku_C17
             string thnTerbit = textBox9.Text;
             string idSupplier = comboBox1.Text;
 
-            if (textBox1.Text == "" || textBox2.Text == "" || textBox3.Text == "" || textBox4.Text == "" || textBox5.Text == "" || textBox6.Text == "" || textBox7.Text == "" || textBox8.Text == "" || textBox9.Text == "" || comboBox1.Text == "")
+            if (textBox1.Text == "" || textBox2.Text == "" || textBox5.Text == "" || textBox6.Text == "" || textBox7.Text == "" || textBox8.Text == "" || textBox9.Text == "" || comboBox1.Text == "")
             {
                 MessageBox.Show("Masukkan Semua Data", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
@@ -174,7 +162,7 @@ namespace TokoBuku_C17
             else
             {
                 koneksi.Open();
-                string str = "UPDATE buku SET nama_buku = @nama_buku, jumlah_stok = @jumlah_stok, penulis = @penulis, penerbit = @penerbit, TahunTerbit = @TahunTerbit, harga_beli = @harga_beli, harga_jual = @harga_jual, keuntungan = @keuntungan, id_supplier = @id_supplier WHERE id_buku = @id_buku";
+                string str = "UPDATE buku SET nama_buku = @nama_buku, jumlah_stok = @jumlah_stok, penulis = @penulis, penerbit = @penerbit, TahunTerbit = @TahunTerbit, harga_jual = @harga_jual, id_supplier = @id_supplier WHERE id_buku = @id_buku";
                 SqlCommand cmd = new SqlCommand(str, koneksi);
                 cmd.CommandType = CommandType.Text;
                 cmd.Parameters.Add(new SqlParameter("@id_buku", idBuku));
@@ -183,9 +171,7 @@ namespace TokoBuku_C17
                 cmd.Parameters.Add(new SqlParameter("@penulis", penulis));
                 cmd.Parameters.Add(new SqlParameter("@penerbit", penerbit));
                 cmd.Parameters.Add(new SqlParameter("@TahunTerbit", thnTerbit));
-                cmd.Parameters.Add(new SqlParameter("@harga_beli", hargaBeli));
                 cmd.Parameters.Add(new SqlParameter("@harga_jual", hargaJual));
-                cmd.Parameters.Add(new SqlParameter("@keuntungan", keuntungan));
                 cmd.Parameters.Add(new SqlParameter("@id_supplier", idSupplier));
                 cmd.ExecuteNonQuery();
                 koneksi.Close();
@@ -220,7 +206,7 @@ namespace TokoBuku_C17
 
         private void Form5_Load(object sender, EventArgs e)
         {
-
+            
         }
 
         private void button6_Click(object sender, EventArgs e)

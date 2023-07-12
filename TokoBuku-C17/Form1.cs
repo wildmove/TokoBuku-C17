@@ -17,12 +17,7 @@ namespace TokoBuku_C17
             InitializeComponent();
         }
 
-        private void label4_Click(object sender, EventArgs e)
-        {
-            Form7 or = new Form7();
-            or.Show();
-            this.Hide();
-        }
+       
 
         private void label1_Click(object sender, EventArgs e)
         {
@@ -59,18 +54,43 @@ namespace TokoBuku_C17
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
-
+            Form5 rm = new Form5();
+            rm.Show();
+            this.Hide();
         }
 
         private void pictureBox2_Click(object sender, EventArgs e)
         {
-
+            Form2 hu = new Form2();
+            hu.Show();
+            this.Hide();
         }
 
         private void label3_Click(object sender, EventArgs e)
         {
             Form6 mr = new Form6();
             mr.Show();
+            this.Hide();
+        }
+
+        private void pictureBox6_Click(object sender, EventArgs e)
+        {
+            Form6 mr = new Form6();
+            mr.Show();
+            this.Hide();
+        }
+
+        private void pictureBox3_Click(object sender, EventArgs e)
+        {
+            Form4 nw = new Form4();
+            nw.Show();
+            this.Hide();
+        }
+
+        private void pictureBox4_Click(object sender, EventArgs e)
+        {
+            Form3 fm = new Form3();
+            fm.Show();
             this.Hide();
         }
     }

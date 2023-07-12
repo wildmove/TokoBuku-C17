@@ -179,5 +179,10 @@ namespace TokoBuku_C17
             fg.Show();
             this.Hide();
         }
+
+        private void Form6_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
