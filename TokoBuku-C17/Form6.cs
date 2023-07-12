@@ -30,14 +30,14 @@ namespace TokoBuku_C17
             comboBox2.Text = "";
             comboBox1.Text = "";
             dateTimePicker1.Text = "";
-            textBox5.Text = "";
+            tbxTotalHarga.Text = "";
             textBox1.Enabled = false;
             kasircbx();
             comboBox2.Enabled = false;
             pembelicbx();
             comboBox1.Enabled = false;
             dateTimePicker1.Enabled = false;
-            textBox5.Enabled = false;
+            tbxTotalHarga.Enabled = false;
          
         }
 
@@ -103,13 +103,13 @@ namespace TokoBuku_C17
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void addButton_Click(object sender, EventArgs e)
         {
             textBox1.Enabled = true;
             comboBox1.Enabled = true;
             comboBox2.Enabled = true;
             dateTimePicker1.Enabled = true;
-            textBox5.Enabled = true;
+            tbxTotalHarga.Enabled = true;
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -118,10 +118,10 @@ namespace TokoBuku_C17
             string idPembeli = comboBox1.Text;
             string idKasir = comboBox2.Text;
             string tanggal = dateTimePicker1.Text;
-            string harga = textBox5.Text;
+            string harga = tbxTotalHarga.Text;
             
 
-            if (textBox1.Text == "" || comboBox2.Text == "" || comboBox1.Text == "" || dateTimePicker1.Text == "" || textBox5.Text == "" )
+            if (textBox1.Text == "" || comboBox2.Text == "" || comboBox1.Text == "" || dateTimePicker1.Text == "" || tbxTotalHarga.Text == "" )
             {
                 MessageBox.Show("Masukkan Semua Data", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
@@ -170,7 +170,7 @@ namespace TokoBuku_C17
         private void button4_Click(object sender, EventArgs e)
         {
             dataGridView();
-            button1.Enabled = true;
+            addButton.Enabled = true;
         }
 
         private void button5_Click(object sender, EventArgs e)
@@ -179,5 +179,90 @@ namespace TokoBuku_C17
             fg.Show();
             this.Hide();
         }
+
+        private void Bukucbx()
+        {
+            koneksi.Open();
+            string str = "SELECT id_buku, nama_buku FROM dbo.buku";
+            SqlCommand cmd = new SqlCommand(str, koneksi);
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+            koneksi.Close();
+
+            cbxBuku.DisplayMember = "nama_buku";
+            cbxBuku.ValueMember = "id_buku";
+            cbxBuku.DataSource = dt;
+        }
+
+        private void BukuNamacbx()
+        {
+            string str = "SELECT * FROM dbo.buku WHERE id_buku  = '" + cbxBuku.SelectedValue.ToString() + "' ";
+            SqlCommand cmd = new SqlCommand(str, koneksi);
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+            foreach (DataRow dr in dt.Rows)
+            {
+                tbxHargaBuku.Text = dr["nama_buku"].ToString();
+            }
+            koneksi.Close();
+        }
+
+        private void BukuHargacbx()
+        {
+            string str = "SELECT * FROM dbo.buku WHERE id_buku  = '" + cbxBuku.SelectedValue.ToString() + "' ";
+            SqlCommand cmd = new SqlCommand(str, koneksi);
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+            foreach (DataRow dr in dt.Rows)
+            {
+                tbxJumlahBuku.Text = dr["harga_jual"].ToString();
+            }
+            koneksi.Close();
+        }
+
+
+        private void cbxBuku_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cbxBuku_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            BukuNamacbx();
+            BukuHargacbx();
+        }
+        int n = 0, grandTotal = 0;
+        private void addButton_Click_1(object sender, EventArgs e)
+        {
+            if (tbxHargaBuku.Text == "" || tbxJumlahBuku.Text == "")
+            {
+                MessageBox.Show("Missing Information!!");
+            }
+            else
+            {
+                int total = Convert.ToInt32(tbxJumlahBuku.Text) * Convert.ToInt32(tbxJumlahBuku.Text);
+                DataGridViewRow newRow = new DataGridViewRow();
+                newRow.CreateCells(dataGridView2);
+                newRow.Cells[0].Value = cbxBuku.Text;
+                newRow.Cells[1].Value = tbxHargaBuku.Text;
+                newRow.Cells[2].Value = tbxJumlahBuku.Text;
+                newRow.Cells[3].Value = total;
+                grandTotal += total;
+                tbxTotalHarga.Text = grandTotal + "";
+                dataGridView2.Rows.Add(newRow);
+            }
     }
-}
+
+        private void tbxNamaBuku_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tbxHargaBuku_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+    }
