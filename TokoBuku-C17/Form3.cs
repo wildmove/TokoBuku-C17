@@ -157,5 +157,12 @@ namespace TokoBuku_C17
                 MessageBox.Show("Data Berhasil Dihapus", "Sukses", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            Form1 nm = new Form1();
+            nm.Show();
+            this.Hide();
+        }
     }
 }
