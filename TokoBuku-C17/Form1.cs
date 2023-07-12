@@ -19,7 +19,9 @@ namespace TokoBuku_C17
 
         private void label4_Click(object sender, EventArgs e)
         {
-
+            Form7 or = new Form7();
+            or.Show();
+            this.Hide();
         }
 
         private void label1_Click(object sender, EventArgs e)
